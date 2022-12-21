@@ -45,5 +45,47 @@ router.post('/form', async (req, res) => {
         console.log(err);
     }
 });
+//get all the data from the database
+router.get('/form', async (req, res) => {
+    try {
+        const data = await Form.find();
+        res.status(200).json(data);
+    } catch (err) {
+        console.log(err);
+    }
+});
+//delete the data from the database
+router.delete('/form/:id', async (req, res) => {
+    try {
+        const _id = req.params.id;
+        const
+            data = await Form.findById
+                (_id);
+        if (!data) {
+            return res.status(404).send();
+        } else {
+            data.remove();
+            res.send(data);
+        }
+    } catch (err) {
+        res
+            .status(500)
+            .send(err);
+    }
+});
+
+//edit the data from the database
+router.patch('/form/:id', async (req, res) => {
+    try {
+        const _id = req.params.id;
+        const data = await Form.findByIdAndUpdate
+            (_id, req.body, { new: true });
+        res.send(data);
+    } catch (err) {
+        res
+            .status(500)
+            .send(err);
+    }
+});
 
 module.exports = router;

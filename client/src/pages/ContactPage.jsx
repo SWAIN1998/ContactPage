@@ -18,7 +18,7 @@ const ContactPage = () => {
         message,
         };
         axios
-        .post('http://localhost:5000/api/form', data)
+        .post('https://clever-snaps-mite.cyclic.app/api/form', data)
         .then((res) => {
             setName('');
             setEmail('');
@@ -72,6 +72,6 @@ const ContactPage = () => {
         </form>
         </div>
     );
-    };
+};
 
 export default ContactPage;
