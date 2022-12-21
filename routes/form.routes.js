@@ -46,7 +46,7 @@ router.post('/form', async (req, res) => {
     }
 });
 //get all the data from the database
-router.get('/form', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const data = await Form.find();
         res.status(200).json(data);
